@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getMovie() {
-
+        //https://gank.io/post/56e80c2c677659311bed9841
         String baseUrl = "https://api.douban.com/v2/movie/";
 
         Retrofit retrofit = new Retrofit.Builder()
