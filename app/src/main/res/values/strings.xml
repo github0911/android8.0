@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Android8.0</string>
+    <string name="title">通知标题</string>
+    <string name="content">通知内容</string>
+    <string name="channel_name">channel</string>
+    <string name="channel_description">description</string>
+</resources>
