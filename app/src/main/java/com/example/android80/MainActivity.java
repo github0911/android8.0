@@ -51,7 +51,7 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -96,8 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             }
             case R.id.btn_get: {
-                getMovie();
-
+//                getMovie();
+                startActivity(MovieActivity.getIntent(MainActivity.this));
                 break;
             }
             default:
@@ -230,8 +230,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void toast(String msg) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
 
 }

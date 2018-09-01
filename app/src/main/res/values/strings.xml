@@ -4,4 +4,7 @@
     <string name="content">通知内容</string>
     <string name="channel_name">channel</string>
     <string name="channel_description">description</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
