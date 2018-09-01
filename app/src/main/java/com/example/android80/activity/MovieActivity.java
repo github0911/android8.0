@@ -1,14 +1,14 @@
-package com.example.android80;
+package com.example.android80.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.example.android80.R;
+import com.example.android80.activity.base.BaseActivity;
 import com.example.android80.api.MovieService;
 import com.example.android80.entity.MovieEntity;
-import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
 
 import io.reactivex.Observer;

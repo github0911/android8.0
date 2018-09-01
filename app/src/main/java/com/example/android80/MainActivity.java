@@ -1,28 +1,19 @@
 package com.example.android80;
 
 import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationChannelGroup;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.example.android80.activity.ExampleActivity;
+import com.example.android80.activity.MovieActivity;
+import com.example.android80.activity.base.BaseActivity;
 import com.example.android80.api.MovieService;
 import com.example.android80.entity.MovieEntity;
 import com.google.gson.Gson;
@@ -32,21 +23,12 @@ import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
-
 import java.util.ArrayList;
 
-import io.reactivex.Observable;
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -188,7 +170,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
                     @Override
                     public void onSubscribe(Disposable d) {
-                        disposable  = d;
+                        disposable = d;
                         if (!d.isDisposed()) {
                             Logger.d("method %s", "onSubscribe");
                         }
@@ -230,5 +212,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
+    public void toExampleActivity(View view) {
+        startActivity(ExampleActivity.getIntent(MainActivity.this));
+    }
 
 }

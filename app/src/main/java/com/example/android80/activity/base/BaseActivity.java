@@ -1,4 +1,4 @@
-package com.example.android80;
+package com.example.android80.activity.base;
 
 import android.os.Bundle;
 import android.support.annotation.StringRes;
