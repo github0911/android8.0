@@ -29,6 +29,7 @@
         app:layout_constraintVertical_bias="0.033" />
 
     <TextView
+        android:id="@+id/tv_send_two"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -54,7 +55,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="76dp"
         android:background="#ff0000"
         android:fontFamily="@font/font_family_miso"
         android:paddingHorizontal="20dp"
@@ -64,7 +64,7 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/tv_send"
         app:layout_constraintStart_toStartOf="@+id/tv_send"
-        app:layout_constraintTop_toBottomOf="@+id/tv_send" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_get" />
 
     <TextView
         android:id="@+id/textView"
@@ -96,16 +96,19 @@
         android:id="@+id/btn_get"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="获取网络请求"
-        app:layout_constraintBaseline_toBaselineOf="@+id/tv_clear"
-        app:layout_constraintLeft_toRightOf="@+id/tv_clear" />
+        android:layout_marginTop="30dp"
+        android:text="豆瓣电影评分"
+        app:layout_constraintBottom_toTopOf="@+id/tv_clear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_send_two" />
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_to_example"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Fragment_example"
         android:onClick="toExampleActivity"
+        android:text="Fragment_example"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />

@@ -25,15 +25,19 @@ import com.example.android80.R;
 import com.example.android80.fragment.ArticleFragment;
 import com.example.android80.fragment.HeadlinesFragment;
 
+/**
+ * //https://developer.android.com/training/basics/fragments/communicating#Implement
+ */
 public class ExampleActivity extends FragmentActivity
         implements HeadlinesFragment.OnHeadlineSelectedListener {
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_articles);
-
         // Check whether the activity is using the layout version with
         // the fragment_container FrameLayout. If so, we must add the first fragment
         if (findViewById(R.id.fragment_container) != null) {

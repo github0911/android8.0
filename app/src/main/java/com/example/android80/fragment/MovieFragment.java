@@ -4,11 +4,28 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.airbnb.epoxy.EpoxyRecyclerView;
 import com.example.android80.R;
+import com.example.android80.activity.movie.adapter.MovieController;
+import com.example.android80.api.MovieService;
+import com.example.android80.entity.MovieEntity;
+import com.orhanobut.logger.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -19,35 +36,19 @@ import com.example.android80.R;
  * Use the {@link MovieFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MovieFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class MovieFragment extends Fragment implements MovieController.Listener {
 
     private OnFragmentInteractionListener mListener;
 
+    private EpoxyRecyclerView recyclerView;
+    private MovieController controller;
+
     public MovieFragment() {
-        // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment MovieFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static MovieFragment newInstance(String param1, String param2) {
+    public static MovieFragment newInstance() {
         MovieFragment fragment = new MovieFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -55,24 +56,25 @@ public class MovieFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie, container, false);
+        View view = inflater.inflate(R.layout.fragment_movie, container, false);
+        initView(view);
+        getMovie();
+        return view;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    private void initView(View view) {
+
+        recyclerView = view.findViewById(R.id.rv_movie);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        controller = new MovieController(this);
+        recyclerView.setController(controller);
+
     }
 
     @Override
@@ -92,6 +94,67 @@ public class MovieFragment extends Fragment {
         mListener = null;
     }
 
+    private void getMovie() {
+        //https://gank.io/post/56e80c2c677659311bed9841
+        String baseUrl = "https://api.douban.com/v2/movie/";
+
+        //addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        //添加Retrofit对Rxjava 返回的就是一个Observable
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .build();
+
+        MovieService service = retrofit.create(MovieService.class);
+
+        service.getTopMovie(0, 1)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<MovieEntity>() {
+                    Disposable disposable;
+
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        disposable  = d;
+                        if (!d.isDisposed()) {
+                            Logger.d("method %s", "onSubscribe");
+                        }
+                    }
+
+                    @Override
+                    public void onNext(MovieEntity movieEntity) {
+                        Logger.d("method %s", "onNext");
+                        List list = new ArrayList();
+                        list.add(movieEntity);
+                        controller.setData(list);
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Logger.d(e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                        if (disposable != null && !disposable.isDisposed()) {
+                            disposable.dispose();
+                        }
+                        Logger.d("method %s", "onComplete");
+                    }
+                });
+
+    }
+
+    @Override
+    public void onItemClick(MovieEntity entity) {
+        Logger.d("onItemClick");
+        if (mListener != null) {
+            mListener.onItemClick(entity);
+        }
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -104,6 +167,6 @@ public class MovieFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onItemClick(MovieEntity entity);
     }
 }

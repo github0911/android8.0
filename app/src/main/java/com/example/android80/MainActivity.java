@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android80.activity.ExampleActivity;
-import com.example.android80.activity.MovieActivity;
+import com.example.android80.activity.movie.MovieActivity;
 import com.example.android80.activity.base.BaseActivity;
 import com.example.android80.api.MovieService;
 import com.example.android80.entity.MovieEntity;
