@@ -12,7 +12,6 @@ import com.airbnb.epoxy.EpoxyModelClass;
 import com.airbnb.epoxy.EpoxyModelWithHolder;
 import com.bumptech.glide.Glide;
 import com.example.android80.R;
-import com.example.android80.common.ListUtils;
 import com.example.android80.entity.MovieEntity;
 import com.google.gson.Gson;
 

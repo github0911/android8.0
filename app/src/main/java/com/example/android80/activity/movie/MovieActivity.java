@@ -9,7 +9,6 @@ import android.text.TextUtils;
 import com.example.android80.R;
 import com.example.android80.activity.base.BaseActivity;
 import com.example.android80.api.MovieService;
-import com.example.android80.common.ListUtils;
 import com.example.android80.entity.MovieEntity;
 import com.example.android80.fragment.MovieFragment;
 import com.example.android80.fragment.WebViewFragment;
@@ -55,69 +54,6 @@ public class MovieActivity extends BaseActivity implements MovieFragment.OnFragm
     public static Intent getIntent(Context context) {
         Intent intent = new Intent(context, MovieActivity.class);
         return intent;
-    }
-
-    private void getMovie() {
-        //https://gank.io/post/56e80c2c677659311bed9841
-        String baseUrl = "https://api.douban.com/v2/movie/";
-
-        //addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        //添加Retrofit对Rxjava 返回的就是一个Observable
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-
-        MovieService service = retrofit.create(MovieService.class);
-
-        service.getTopMovie(0, 1)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<MovieEntity>() {
-                    Disposable disposable;
-
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        disposable  = d;
-                        if (!d.isDisposed()) {
-                            Logger.d("method %s", "onSubscribe");
-                        }
-                    }
-
-                    @Override
-                    public void onNext(MovieEntity movieEntity) {
-                        toast(movieEntity.getTitle());
-                        Logger.d("method %s", "onNext");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        toast(e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                        if (disposable != null && !disposable.isDisposed()) {
-                            disposable.dispose();
-                        }
-                        Logger.d("method %s", "onComplete");
-                    }
-                });
-//        call.enqueue(new Callback<MovieEntity>() {
-//            @Override
-//            public void onResponse(Call<MovieEntity> call, Response<MovieEntity> response) {
-//                MovieEntity entity = response.body();
-//                textView.setText(new Gson().toJson(entity.getTitle()));
-//            }
-//
-//            @Override
-//            public void onFailure(Call<MovieEntity> call, Throwable t) {
-//                textView.setText(t.getMessage());
-//            }
-//        });
-
     }
 
     @Override

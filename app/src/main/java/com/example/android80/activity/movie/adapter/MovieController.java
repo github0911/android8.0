@@ -3,12 +3,10 @@ package com.example.android80.activity.movie.adapter;
 import android.view.View;
 
 import com.airbnb.epoxy.AutoModel;
-import com.airbnb.epoxy.EpoxyAttribute;
 import com.airbnb.epoxy.EpoxyController;
 import com.airbnb.epoxy.OnModelBoundListener;
 import com.airbnb.epoxy.OnModelClickListener;
 import com.example.android80.activity.movie.view.MovieEmptyModel;
-import com.example.android80.activity.movie.view.MovieItemModel;
 import com.example.android80.activity.movie.view.MovieItemModel_;
 import com.example.android80.common.ListUtils;
 import com.example.android80.entity.MovieEntity;

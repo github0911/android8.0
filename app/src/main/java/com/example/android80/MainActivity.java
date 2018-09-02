@@ -4,19 +4,16 @@ import android.app.Notification;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android80.activity.ExampleActivity;
-import com.example.android80.activity.movie.MovieActivity;
 import com.example.android80.activity.base.BaseActivity;
-import com.example.android80.api.MovieService;
-import com.example.android80.entity.MovieEntity;
-import com.google.gson.Gson;
+import com.example.android80.activity.movie.MovieActivity;
 import com.google.zxing.client.android.encode.QRCodeEncoder;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
@@ -24,14 +21,6 @@ import com.orhanobut.logger.Logger;
 import com.orhanobut.logger.PrettyFormatStrategy;
 
 import java.util.ArrayList;
-
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
@@ -78,7 +67,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             }
             case R.id.btn_get: {
-//                getMovie();
                 startActivity(MovieActivity.getIntent(MainActivity.this));
                 break;
             }
@@ -146,70 +134,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    private void getMovie() {
-        //https://gank.io/post/56e80c2c677659311bed9841
-        String baseUrl = "https://api.douban.com/v2/movie/";
-
-        //addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-        //添加Retrofit对Rxjava 返回的就是一个Observable
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-
-        MovieService service = retrofit.create(MovieService.class);
-
-        service.getTopMovie(0, 1)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<MovieEntity>() {
-                    Disposable disposable;
-
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        disposable = d;
-                        if (!d.isDisposed()) {
-                            Logger.d("method %s", "onSubscribe");
-                        }
-                    }
-
-                    @Override
-                    public void onNext(MovieEntity movieEntity) {
-                        toast(movieEntity.getTitle());
-                        textView.setText(new Gson().toJson(movieEntity.getTitle()));
-                        Logger.d("method %s", "onNext");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        toast(e.getMessage());
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                        if (disposable != null && !disposable.isDisposed()) {
-                            disposable.dispose();
-                        }
-                        Logger.d("method %s", "onComplete");
-                    }
-                });
-//        call.enqueue(new Callback<MovieEntity>() {
-//            @Override
-//            public void onResponse(Call<MovieEntity> call, Response<MovieEntity> response) {
-//                MovieEntity entity = response.body();
-//                textView.setText(new Gson().toJson(entity.getTitle()));
-//            }
-//
-//            @Override
-//            public void onFailure(Call<MovieEntity> call, Throwable t) {
-//                textView.setText(t.getMessage());
-//            }
-//        });
-
     }
 
     public void toExampleActivity(View view) {
