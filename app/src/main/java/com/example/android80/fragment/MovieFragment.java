@@ -148,10 +148,10 @@ public class MovieFragment extends Fragment implements MovieController.Listener 
     }
 
     @Override
-    public void onItemClick(MovieEntity entity) {
+    public void onItemClick(MovieEntity.SubjectsBean subjectsBean) {
         Logger.d("onItemClick");
         if (mListener != null) {
-            mListener.onItemClick(entity);
+            mListener.onItemClick(subjectsBean);
         }
     }
 
@@ -167,6 +167,6 @@ public class MovieFragment extends Fragment implements MovieController.Listener 
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onItemClick(MovieEntity entity);
+        void onItemClick(MovieEntity.SubjectsBean subjectsBean);
     }
 }

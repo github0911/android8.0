@@ -21,7 +21,7 @@ public abstract class MovieItemModel extends EpoxyModelWithHolder<MovieItemModel
 
     @EpoxyAttribute
     @Nullable
-    MovieEntity movieEntity;
+    MovieEntity.SubjectsBean subjectsBean;
 
     @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash)
     View.OnClickListener onClickListener;
@@ -33,15 +33,10 @@ public abstract class MovieItemModel extends EpoxyModelWithHolder<MovieItemModel
 
     @Override
     public void bind(@NonNull Holder holder) {
-        if (movieEntity == null) {
-            return;
-        }
-
-        MovieEntity.SubjectsBean subjectsBean
-                = (MovieEntity.SubjectsBean) ListUtils.getItem(movieEntity.getSubjects(), 0);
         if (subjectsBean == null) {
             return;
         }
+
         holder.tvChineseTitle.setText(subjectsBean.getTitle());
         holder.tvOriginalTitle.setText(subjectsBean.getOriginal_title());
         holder.tvCollectCount.setText(subjectsBean.getCollect_count() + "");
@@ -62,6 +57,8 @@ public abstract class MovieItemModel extends EpoxyModelWithHolder<MovieItemModel
     @Override
     public void unbind(@NonNull Holder holder) {
         super.unbind(holder);
+        holder.ivImage.setOnClickListener(null);
+        holder.tvLink.setOnClickListener(null);
     }
 
     public static class Holder extends EpoxyHolder {

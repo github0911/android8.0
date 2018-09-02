@@ -10,6 +10,7 @@ import com.airbnb.epoxy.OnModelClickListener;
 import com.example.android80.activity.movie.view.MovieEmptyModel;
 import com.example.android80.activity.movie.view.MovieItemModel;
 import com.example.android80.activity.movie.view.MovieItemModel_;
+import com.example.android80.common.ListUtils;
 import com.example.android80.entity.MovieEntity;
 
 import java.util.List;
@@ -34,14 +35,16 @@ public class MovieController extends EpoxyController
 
     @Override
     protected void buildModels() {
-        boolean hasList = mData != null && !mData.isEmpty();
+        List<MovieEntity.SubjectsBean> list = ((MovieEntity)ListUtils.getItem(mData, 0)).getSubjects();
+
+        boolean hasList = ListUtils.isNotEmpty(list);
         if (hasList) {
-            for (MovieEntity entity : mData) {
-                if (entity == null) {
+            for (MovieEntity.SubjectsBean subjectsBean : list) {
+                if (subjectsBean == null) {
                     continue;
                 }
                 itemModel.onClickListener(this)
-                        .movieEntity(entity)
+                        .subjectsBean(subjectsBean)
                         .addTo(this);
             }
         }
@@ -61,13 +64,13 @@ public class MovieController extends EpoxyController
 
     @Override
     public void onClick(MovieItemModel_ model, MovieItemModel_.Holder parentView, View clickedView, int position) {
-        MovieEntity entity = model.movieEntity();
-        if (listener != null && entity != null) {
-            listener.onItemClick(entity);
+        MovieEntity.SubjectsBean subjectsBean = model.subjectsBean();
+        if (listener != null && subjectsBean != null) {
+            listener.onItemClick(subjectsBean);
         }
     }
 
     public interface Listener {
-        void onItemClick(MovieEntity entity);
+        void onItemClick(MovieEntity.SubjectsBean subjectsBean);
     }
 }

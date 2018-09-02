@@ -65,6 +65,7 @@ public class WebViewFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_web_view, container, false);
         initView(view);
+        initWebView();
         reload(link);
         return view;
     }
@@ -75,8 +76,6 @@ public class WebViewFragment extends Fragment {
 
     @SuppressLint({"AddJavascriptInterface", "JavascriptInterface"})
     private void initWebView() {
-
-
         WebSettings webSettings = webView.getSettings();
         try {
             webSettings.setJavaScriptEnabled(true); // 启用支持javascript
@@ -84,13 +83,13 @@ public class WebViewFragment extends Fragment {
             e.printStackTrace();
         }
         webSettings.setCacheMode(WebSettings.LOAD_NO_CACHE);
-        webSettings.setAllowFileAccess(true);// 可以访问文件
-        webSettings.setBuiltInZoomControls(true);// 支持缩放
+        // 可以访问文件
+        webSettings.setAllowFileAccess(true);
+        webSettings.setBuiltInZoomControls(true);
         webSettings.setSavePassword(false);
-        if (android.os.Build.VERSION.SDK_INT >= 11) {
-            webSettings.setPluginState(WebSettings.PluginState.ON);
-            webSettings.setDisplayZoomControls(false);// 支持缩放
-        }
+        webSettings.setPluginState(WebSettings.PluginState.ON);
+        // 支持缩放
+        webSettings.setDisplayZoomControls(false);
         webSettings.setAppCacheEnabled(true);
         webSettings.setDomStorageEnabled(true);
 
@@ -104,8 +103,8 @@ public class WebViewFragment extends Fragment {
         MyWebChromeClient webChromeClient = new MyWebChromeClient();
         webView.setWebChromeClient(webChromeClient);
         //
-        WebviewResultObject webviewObject = new WebviewResultObject();
-        webView.addJavascriptInterface(webviewObject, "webViewObject");
+//        WebViewResultObject webViewObject = new WebViewResultObject();
+//        webView.addJavascriptInterface(webViewObject, "webViewObject");
 
         //设置cookie
     }
@@ -126,13 +125,13 @@ public class WebViewFragment extends Fragment {
 
     }
 
-    public class WebviewResultObject {
+    public class WebViewResultObject {
 
     }
 
     public void reload(String url) {
         if (webView != null) {
-            webView.loadUrl("http://www.baidu.com");
+            webView.loadUrl(url);
         }
     }
 

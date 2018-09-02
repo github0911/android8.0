@@ -121,10 +121,8 @@ public class MovieActivity extends BaseActivity implements MovieFragment.OnFragm
     }
 
     @Override
-    public void onItemClick(MovieEntity entity) {
-        if (entity != null) {
-            MovieEntity.SubjectsBean subjectsBean =
-                    (MovieEntity.SubjectsBean) ListUtils.getItem(entity.getSubjects(), 0);
+    public void onItemClick(MovieEntity.SubjectsBean subjectsBean) {
+        if (subjectsBean != null) {
             toWebViewFragment(subjectsBean.getAlt());
         }
     }
