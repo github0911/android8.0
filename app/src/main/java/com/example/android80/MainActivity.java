@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.android80.activity.ExampleActivity;
 import com.example.android80.activity.base.BaseActivity;
+import com.example.android80.activity.login.LoginActivity;
 import com.example.android80.activity.movie.MovieActivity;
 import com.google.zxing.client.android.encode.QRCodeEncoder;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -67,7 +68,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
             }
             case R.id.btn_get: {
-                startActivity(MovieActivity.getIntent(MainActivity.this));
+
+                startActivity(LoginActivity.getIntent(MainActivity.this));
                 break;
             }
             default:

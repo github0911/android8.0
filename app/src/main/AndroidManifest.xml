@@ -21,6 +21,8 @@
         <activity android:name=".activity.movie.MovieActivity" />
         <activity android:name=".activity.base.BaseActivity"></activity>
         <activity android:name=".activity.ExampleActivity"></activity>
+        <activity android:name=".activity.login.LoginActivity"
+            />
 
     </application>
 
