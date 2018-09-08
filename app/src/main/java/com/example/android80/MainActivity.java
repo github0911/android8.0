@@ -1,6 +1,7 @@
 package com.example.android80;
 
 import android.app.Notification;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
@@ -15,6 +16,7 @@ import com.example.android80.activity.ExampleActivity;
 import com.example.android80.activity.base.BaseActivity;
 import com.example.android80.activity.login.LoginActivity;
 import com.example.android80.activity.movie.MovieActivity;
+import com.example.android80.activity.rxjava.OperatorsActivity;
 import com.google.zxing.client.android.encode.QRCodeEncoder;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
@@ -140,6 +142,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     public void toExampleActivity(View view) {
         startActivity(ExampleActivity.getIntent(MainActivity.this));
+    }
+
+    public void toRxJavaActivity(View view) {
+        startActivity(new Intent(MainActivity.this, OperatorsActivity.class));
     }
 
 }

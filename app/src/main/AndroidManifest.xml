@@ -19,11 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.movie.MovieActivity" />
-        <activity android:name=".activity.base.BaseActivity"></activity>
-        <activity android:name=".activity.ExampleActivity"></activity>
-        <activity android:name=".activity.login.LoginActivity"
-            />
-
+        <activity android:name=".activity.base.BaseActivity" />
+        <activity android:name=".activity.ExampleActivity" />
+        <activity android:name=".activity.login.LoginActivity" />
+        <activity android:name=".activity.rxjava.operators.DisposableExampleActivity"></activity>
+        <activity android:name=".activity.rxjava.OperatorsActivity"></activity>
     </application>
 
 </manifest>

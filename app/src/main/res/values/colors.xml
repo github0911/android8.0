@@ -3,4 +3,144 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!---->
+    <color name="transparent">#00000000</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="return_explain">#99000000</color>
+    <color name="return_explain_title">#f0f0f0</color>
+    <color name="return_seller_recode">#FBEBD9</color>
+
+    <!-- gray -->
+    <color name="gray">#999</color>
+    <color name="gray_bg">@color/col_f7f7f7</color>
+    <color name="gray2">#e8eaeb</color>
+    <color name="gray3">#333</color>
+    <color name="gray4">#666</color>
+    <color name="gray_bg4">#b0b0b0</color>
+    <color name="gray_press">#e5e5e5</color>
+
+    <color name="col_ababab">#ababab</color>
+    <color name="col_cccccc">#cccccc</color>
+    <color name="col_dfdfdf">#dfdfdf</color>
+
+    <!-- 标准分隔线颜色 -->
+    <color name="line_color2">#eaeaea</color>
+    <color name="line_color3">#606060</color>
+
+    <!---->
+    <color name="pink">#fd5e89</color>
+    <color name="pink_new">#fb3180</color>
+    <color name="pink_press">#e05379</color>
+    <color name="pink_bg">#fd6991</color>
+    <color name="half_tranparent_bg">#2e000000</color>
+    <color name="half_tranparent_bg2">#b3000000</color>
+    <color name="cc_tranparent_bg2">#cc000000</color>
+    <color name="stock_rank">#ffb9cc</color>
+    <color name="col_ffe013">#ffe013</color>
+
+    <color name="light_white">#ccc</color>
+    <color name="light_gray">#111</color>
+
+    <color name="brand_museum_title_bar_bg">#091a3f</color>
+
+    <color name="col_1ea537">#1ea537</color>
+    <color name="col_222">#222222</color>
+    <color name="col_fe6464">#fe6464</color>
+    <color name="col_f0f0f0">#f0f0f0</color>
+    <color name="col_fefefe">#fefefe</color>
+    <color name="col_ff518e">#ff518e</color>
+    <color name="col_fd5e89">#fd5e89</color>
+    <color name="col_fb3180">#fb3180</color>
+    <color name="col_676767">#676767</color>
+    <color name="col_fd9b00">#fd9b00</color>
+    <color name="col_18ad18">#18ad18</color>
+    <color name="col_19ad18">#19ad18</color>
+    <color name="col_19ad19">#19ad19</color>
+    <color name="common_black_60">#99000000</color>
+    <color name="common_black_65">#a6000000</color>
+    <color name="common_black_70">#b3000000</color>
+    <color name="common_black_50">#80000000</color>
+    <!--提示弹窗标题用的背景颜色-->
+
+    <color name="col_ffc4c4">#ffc4c4</color>
+    <color name="col_fee8f0">#fee8f0</color>
+
+    <color name="col_ff6464">#ff6464</color>
+    <color name="col_ffe44d">#ffe44d</color>
+    <color name="col_8f5b00">#8f5b00</color>
+    <color name="col_9f3838">#9f3838</color>
+    <color name="col_ff5666">#ff5666</color>
+    <color name="col_fcebd9">#fcebd9</color>
+    <color name="col_ad7c45">#ad7c45</color>
+
+    <color name="common_white_80">#ccFFFFFF</color>
+    <color name="col_404040">#404040</color>
+    <color name="col_556fb5">#556fb5</color>
+    <color name="col_ff0090">#ff0090</color>
+    <color name="col_fae100">#fae100</color>
+    <color name="col_f5f7f6">#f5f7f6</color>
+    <color name="col_cc0074">#cc0074</color>
+    <color name="col_efefef">#efefef</color>
+    <color name="col_202020">#202020</color>
+    <color name="col_666666">#666666</color>
+    <color name="col_7938f4">#7938f4</color>
+    <color name="col_9435fe">#9435fe</color>
+    <color name="col_7836f5">#7836f5</color>
+    <color name="col_e02174">#e02174</color>
+    <color name="col_f3f3f3">#f3f3f3</color>
+    <color name="col_ffcf3b">#ffcf3b</color>
+    <color name="col_ffc937">#ffc937</color>
+
+    <color name="col_0c84e9">#0c84e9</color>
+    <color name="col_9dd0fb">#9dd0fb</color>
+    <color name="col_90_percent_white">#dfffffff</color>
+    <color name="col_80_percent_white">#ccffffff</color>
+    <color name="col_60_percent_white">#99ffffff</color>
+    <color name="col_50_percent_white">#80ffffff</color>
+    <color name="col_80_percent_fe5353">#ccfe5353</color>
+
+
+    <color name="col_f7f7f7">#f7f7f7</color>
+    <color name="col_ffbbe6">#ffbbe6</color>
+    <color name="col_bcb0ff">#bcb0ff</color>
+    <color name="col_ffe8b8">#ffe8b8</color>
+    <color name="col_16ad41">#16ad41</color>
+    <color name="col_c9a5e8">#c9a5e8</color>
+    <color name="col_9f1b2b">#9f1b2b</color>
+    <color name="col_ff0048">#ff0048</color>
+    <color name="col_fff228">#fff228</color>
+    <color name="col_e5d925">#e5d925</color>
+    <color name="col_ffb400">#ffb400</color>
+    <color name="col_f7e9c8">#f7e9c8</color>
+    <color name="col_ff1562">#ff1562</color>
+    <color name="col_fee9f0">#fee9f0</color>
+    <color name="col_4cd964">#4CD964</color>
+    <color name="col_fafafa">#fafafa</color>
+    <color name="col_1aac18">#1AAC18</color>
+    <color name="col_c8771b">#C8771B</color>
+    <color name="col_dcc987">#DCC987</color>
+    <color name="col_414141">#414141</color>
+    <color name="col_eaeaea">#eaeaea</color>
+    <color name="col_f4f4f4">#f4f4f4</color>
+    <color name="col_06ce85">#06ce85</color>
+    <color name="col_fcf1cf">#fcf1cf</color>
+    <color name="col_6e6445">#6e6445</color>
+    <color name="col_f9f9f9">#f9f9f9</color>
+    <color name="col_f3d18b">#f3d18b</color>
+    <color name="col_ef988e">#ef988e</color>
+    <color name="col_fbebd9">#fbebd9</color>
+    <color name="col_D92C70">#D92C70</color>
+    <color name="col_4d5561">#4d5561</color>
+
+    <color name="dark_gray_80">#cc4d5561</color>
+    <color name="col_3c4149">#3c4149</color>
+    <color name="col_d4c888">#d4c888</color>
+    <color name="col_464d57">#464d57</color>
+    <color name="col_ae476f">#ae476f</color>
+    <color name="col_898b8f">#898b8f</color>
+    <color name="col_ffe42e">#ffe42e</color>
+    <color name="col_dcb368">#dcb368</color>
+    <color name="col_bb3d32">#bb3d32</color>
 </resources>
